@@ -11,7 +11,7 @@
   },
   "scripts": {
     "compile": "tsc",
-    "deploy": "cp src/tic.html dist/tic.html && browserify src/gui.ts -p [ tsify --noImplicitAny ] -o dist/tic.js",
+    "deploy": "browserify src/gui.ts -p [ tsify --noImplicitAny ] -o dist/tic.js",
     "watchify": "watchify src/gui.ts -p [ tsify --noImplicitAny ] -d -v -o dist/tic.js"
   }
 }
