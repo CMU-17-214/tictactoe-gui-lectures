@@ -117,12 +117,3 @@ app.listen(port, () => {
     console.log(`server started at http://localhost:${port}`);
 });
 
-
-
-// function updatePage() {
-
-// }
-
-
-// //when first loading the page initialize
-// updatePage()

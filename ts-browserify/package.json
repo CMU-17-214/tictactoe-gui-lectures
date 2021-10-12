@@ -4,17 +4,13 @@
   "version": "0.1.0",
   "license": "GPLv3",
   "devDependencies": {
-    "@types/jest": "^27.0.2",
     "browserify": "^17.0.0",
-    "jest": "^27.2.5",
-    "ts-jest": "^27.0.5",
     "tsify": "^5.0.4",
     "typescript": "^4.4.3",
     "watchify": "^4.0.0"
   },
   "scripts": {
     "compile": "tsc",
-    "test": "jest --env=node --colors --coverage test",
     "deploy": "cp src/tic.html dist/tic.html && browserify src/gui.ts -p [ tsify --noImplicitAny ] -o dist/tic.js",
     "watchify": "watchify src/gui.ts -p [ tsify --noImplicitAny ] -d -v -o dist/tic.js"
   }
