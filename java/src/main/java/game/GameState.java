@@ -36,9 +36,9 @@ public class GameState {
     private static String getInstructions(Game game) {
         String instructions;
         if (game.getWinner() != null) {
-            instructions = "Player " + (game.getWinner() == Game.Player.PLAYER0 ? "0" : "1") + " has won.";
+            instructions = "Player " + (game.getWinner() == Player.PLAYER0 ? "0" : "1") + " has won.";
         } else {
-            instructions = "Next turn: Player " + (game.getPlayer() == Game.Player.PLAYER0 ? "0" : "1") + ".";
+            instructions = "Next turn: Player " + (game.getPlayer() == Player.PLAYER0 ? "0" : "1") + ".";
         }
         return instructions;
     }
@@ -51,9 +51,9 @@ public class GameState {
                 String text = "";
                 String link = "";
                 String clazz = "";
-                Game.Player player = board.getCell(x, y);
-                if (player == Game.Player.PLAYER0) text = "X";
-                else if (player == Game.Player.PLAYER1) text = "O";
+                Player player = board.getCell(x, y);
+                if (player == Player.PLAYER0) text = "X";
+                else if (player == Player.PLAYER1) text = "O";
                 else if (player == null) {
                     clazz = "playable";
                     link = "/play?x=" + x + "&y=" + y;

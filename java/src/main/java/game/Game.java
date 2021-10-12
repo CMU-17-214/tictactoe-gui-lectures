@@ -3,6 +3,17 @@ package game;
 import java.util.ArrayList;
 import java.util.List;
 
+
+enum Player {
+    PLAYER0(0), PLAYER1(1);
+
+    final int value;
+
+    Player(int value) {
+        this.value = value;
+    }
+}
+
 public class Game {
     private final Board board;
     private final Player player;
@@ -56,15 +67,5 @@ public class Game {
     public Game undo() {
         if (this.history.isEmpty()) return this;
         return this.history.get(this.history.size() - 1);
-    }
-
-    public enum Player {
-        PLAYER0(0), PLAYER1(1);
-
-        final int value;
-
-        Player(int value) {
-            this.value = value;
-        }
     }
 }
