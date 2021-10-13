@@ -9,7 +9,6 @@ import { Game, initializeGame, Player } from "./game";
 console.log("starting")
 
 // getting the GUI elements
-const uiText = document.getElementById('instructions')!;
 const uiBoard = document.getElementById('board')!;
 //put all cells into a 2d array so that they are easy to manipulate
 let cells: Element[][] = []
@@ -22,7 +21,6 @@ for (let x = 0; x <= 2; x++) {
 
 
 //adding callbacks for buttons (observer pattern)
-document.getElementById("undobtn")!.addEventListener("click", undoClicked)
 document.getElementById("newgamebtn")!.addEventListener("click", startNewGameClicked)
 for (let x = 0; x <= 2; x++)
     for (let y = 0; y <= 2; y++) {
@@ -43,12 +41,6 @@ function startNewGameClicked() {
     updatePage()
 }
 
-function undoClicked() {
-    console.log("undo btn clicked")
-    game = game.undo()
-    updatePage()
-}
-
 function clickCell(x: number, y: number): void {
     console.log(`click cell ${x} ${y}`)
     game = game.play(x, y)
@@ -57,12 +49,6 @@ function clickCell(x: number, y: number): void {
 
 function updatePage() {
     console.log("update page")
-    //there are smarter ways to do incremental updates, but I'm just going to rerender everything
-    if (game.getWinner() !== null) {
-        uiText.innerHTML = `Player ${game.getWinner()} has won.`
-    } else {
-        uiText.innerHTML = `Next turn: Player ${game.getNextPlayer()}.`
-    }
     const board = game.board
     for (let x = 0; x <= 2; x++)
         for (let y = 0; y <= 2; y++) {

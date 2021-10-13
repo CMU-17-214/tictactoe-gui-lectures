@@ -63,9 +63,4 @@ public class Game {
                 && board.getCell(1, 1) == board.getCell(2, 0)) return board.getCell(1, 1);
         return null;
     }
-
-    public Game undo() {
-        if (this.history.isEmpty()) return this;
-        return this.history.get(this.history.size() - 1);
-    }
 }

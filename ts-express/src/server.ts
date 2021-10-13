@@ -33,11 +33,6 @@ function startNewGameClicked() {
     game = initializeGame()
 }
 
-function undoClicked() {
-    console.log("undo btn clicked")
-    game = game.undo()
-}
-
 function clickCell(x: number, y: number): void {
     console.log(`click cell ${x} ${y}`)
     game = game.play(x, y)
@@ -51,13 +46,6 @@ function clickCell(x: number, y: number): void {
  */
 function genPage() {
     console.log("update page")
-    let instructions = ""
-    //there are smarter ways to do incremental updates, but I'm just going to rerender everything
-    if (game.getWinner() !== null) {
-        instructions = `Player ${game.getWinner()} has won.`
-    } else {
-        instructions = `Next turn: Player ${game.getNextPlayer()}.`
-    }
 
     let cells: any[] = []
     const board = game.board
@@ -80,7 +68,6 @@ function genPage() {
 
 
     return {
-        instructions: instructions,
         cells: cells
     }
 }
@@ -91,11 +78,6 @@ function renderPage(res: Response<any, Record<string, any>, number>) {
 
 app.get("/newgame", (req, res) => {
     startNewGameClicked()
-    renderPage(res)
-});
-
-app.get("/undo", (req, res) => {
-    undoClicked()
     renderPage(res)
 });
 

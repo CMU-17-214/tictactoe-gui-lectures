@@ -4,23 +4,17 @@ import java.util.Arrays;
 
 public class GameState {
 
-    private final String instructions;
     private final Cell[] cells;
 
-    private GameState(String instructions, Cell[] cells) {
-        this.instructions = instructions;
+    private GameState(Cell[] cells) {
         this.cells = cells;
     }
 
     public static GameState forGame(Game game) {
         Cell[] cells = getCells(game);
-        String instructions = getInstructions(game);
-        return new GameState(instructions, cells);
+        return new GameState(cells);
     }
 
-    public String getInstructions() {
-        return this.instructions;
-    }
 
     public Cell[] getCells() {
         return this.cells;
@@ -29,18 +23,7 @@ public class GameState {
     @Override
     public String toString() {
         return "GameState[" +
-                "instructions=" + this.instructions + ", " +
                 "cells=" + Arrays.toString(this.cells) + ']';
-    }
-
-    private static String getInstructions(Game game) {
-        String instructions;
-        if (game.getWinner() != null) {
-            instructions = "Player " + (game.getWinner() == Player.PLAYER0 ? "0" : "1") + " has won.";
-        } else {
-            instructions = "Next turn: Player " + (game.getPlayer() == Player.PLAYER0 ? "0" : "1") + ".";
-        }
-        return instructions;
     }
 
     private static Cell[] getCells(Game game) {

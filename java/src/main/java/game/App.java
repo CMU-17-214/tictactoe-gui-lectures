@@ -39,8 +39,6 @@ public class App extends NanoHTTPD {
             Map<String, String> params = session.getParms();
             if (uri.equals("/newgame")) {
                 this.game = new Game();
-            } else if (uri.equals("/undo")) {
-                this.game = this.game.undo();
             } else if (uri.equals("/play")) {
                 this.game = this.game.play(Integer.parseInt(params.get("x")), Integer.parseInt(params.get("y")));
             }

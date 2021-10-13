@@ -10,7 +10,6 @@ interface Game {
     getNextPlayer(): Player
     getWinner(): PlayerOrEmpty
     play(x: number, y: number): Game
-    undo(): Game
 }
 
 interface Board {
@@ -46,10 +45,6 @@ function newGame(board: Board, nextPlayer: Player, history: Game[]): Game {
         },
         getNextPlayer: function () {
             return nextPlayer
-        },
-        undo: function (): Game {
-            if (history.length === 0) return this
-            return history[history.length - 1]
         }
     }
 }
@@ -57,9 +52,6 @@ function newGame(board: Board, nextPlayer: Player, history: Game[]): Game {
 function newEmptyBoard(): Board {
     return newBoard(new Array(9).fill(null, 0, 9))
 }
-
-
-
 
 function newBoard(cells: PlayerOrEmpty[]): Board {
     return {
